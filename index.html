@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vulcano App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="image/favicon.ico" type="image/x-icon" />
+</head>
+<body class="bg-[#C19A6B] text-white font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-[#714C3A] border-b border-[#5A3A2E]">
+    <div class="max-w-screen-xl mx-auto flex justify-between items-center p-4">
+      <a href="#" class="flex items-center space-x-3">
+        <img src="image/vulcano.png" class="h-8" alt="Logo Vulcano" />
+        <span class="text-2xl font-semibold">Vulcano APP</span>
+      </a>
+      <ul class="flex gap-6">
+        <li><a href="#inicio" class="hover:text-[#D2B48C]">Inicio</a></li>
+        <li><a href="#objetivo" class="hover:text-[#D2B48C]">Nuestro Proyecto</a></li>
+        <li><a href="#equipo" class="hover:text-[#D2B48C]">Nuestro Equipo</a></li>
+        <li><a href="#contacto" class="hover:text-[#D2B48C]">Contacto</a></li>
+      </ul>
+      <button class="bg-[#5A3A2E] hover:bg-[#A57E5A] px-4 py-2 rounded text-sm">Login</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="relative h-screen flex items-center justify-center text-center">
+    <div class="absolute inset-0 overflow-hidden">
+      <video class="w-full h-full object-cover" autoplay muted loop>
+        <source src="Videos/Vulcano App Aprende Programacin Jugando_free.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 bg-[#714C3A]/60 z-10"></div>
+    </div>
+    <div class="relative z-20 px-6">
+      <h2 class="text-4xl font-bold mb-4">Aprende Programación Jugando</h2>
+      <p class="text-lg mb-6">Transformamos el estudio en una experiencia divertida y creativa.</p>
+      <button onclick="scrollToSection('objetivo')" class="bg-[#D2B48C] hover:bg-[#A57E5A] text-[#5A3A2E] px-6 py-2 rounded font-semibold">Conoce más</button>
+    </div>
+  </section>
+
+  <!-- Objetivo del Proyecto -->
+  <section id="objetivo" class="py-16 px-6 bg-[#A57E5A]">
+    <h3 class="text-3xl font-semibold mb-4">🎯 Objetivo del Proyecto</h3>
+    <p class="mb-6">Desarrollar una plataforma digital de gamificación académica para fortalecer el aprendizaje en desarrollo de software.</p>
+    <ul class="list-disc pl-6 space-y-2">
+      <li>Diseñar actividades lúdicas que refuercen conocimientos.</li>
+      <li>Aplicar metodologías ágiles en el desarrollo.</li>
+      <li>Evaluar y mejorar la interacción educativa.</li>
+    </ul>
+  </section>
+
+  <!-- Nuestro Equipo -->
+  <section id="equipo" class="py-16 px-6 bg-[#714C3A]">
+    <h3 class="text-3xl font-semibold mb-6">👥 Nuestro Equipo</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-[#C19A6B] p-4 rounded shadow text-[#5A3A2E]">
+        <h4 class="font-bold">Ana Torres</h4>
+        <p>Desarrolladora Frontend</p>
+      </div>
+      <div class="bg-[#C19A6B] p-4 rounded shadow text-[#5A3A2E]">
+        <h4 class="font-bold">Carlos Mejía</h4>
+        <p>Diseñador UX/UI</p>
+      </div>
+      <div class="bg-[#C19A6B] p-4 rounded shadow text-[#5A3A2E]">
+        <h4 class="font-bold">Laura Gómez</h4>
+        <p>Scrum Master</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-16 px-6 bg-[#A57E5A]">
+    <h3 class="text-3xl font-semibold mb-6">📬 Contáctenos</h3>
+    <form id="contactForm" class="space-y-4 max-w-md mx-auto">
+      <input type="text" placeholder="Nombre" class="w-full p-2 rounded text-black" required />
+      <input type="email" placeholder="Correo electrónico" class="w-full p-2 rounded text-black" required />
+      <textarea placeholder="Mensaje" class="w-full p-2 rounded text-black" rows="4" required></textarea>
+      <button type="submit" class="bg-[#714C3A] hover:bg-[#5A3A2E] text-white px-4 py-2 rounded">Enviar</button>
+    </form>
+    <p id="formMessage" class="text-white mt-4 text-center hidden">¡Gracias por tu mensaje!</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#5A3A2E] text-white text-center py-4">
+    <p>&copy; 2025 Vulcano App. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('formMessage').classList.remove('hidden');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
