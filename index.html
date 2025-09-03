@@ -9,5 +9,37 @@
 </head>
 <body class="bg-[#C19A6B] text-white font-sans">
 
+  <!-- Navbar -->
+  <nav class="bg-[#714C3A] border-b border-[#5A3A2E]">
+    <div class="max-w-screen-xl mx-auto flex justify-between items-center p-4">
+      <a href="#" class="flex items-center space-x-3">
+        <img src="image/vulcano.png" class="h-8" alt="Logo Vulcano" />
+        <span class="text-2xl font-semibold">Vulcano APP</span>
+      </a>
+      <ul class="flex gap-6">
+        <li><a href="#inicio" class="hover:text-[#D2B48C]">Inicio</a></li>
+        <li><a href="#objetivo" class="hover:text-[#D2B48C]">Nuestro Proyecto</a></li>
+        <li><a href="#equipo" class="hover:text-[#D2B48C]">Nuestro Equipo</a></li>
+        <li><a href="#contacto" class="hover:text-[#D2B48C]">Contacto</a></li>
+      </ul>
+      <button class="bg-[#5A3A2E] hover:bg-[#A57E5A] px-4 py-2 rounded text-sm">Login</button>
+    </div>
+  </nav>
+  
+  <!-- Hero Section -->
+  <section id="inicio" class="relative h-screen flex items-center justify-center text-center">
+    <div class="absolute inset-0 overflow-hidden">
+      <video class="w-full h-full object-cover" autoplay muted loop>
+        <source src="Videos/Vulcano App Aprende Programacin Jugando_free.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 bg-[#714C3A]/60 z-10"></div>
+    </div>
+    <div class="relative z-20 px-6">
+      <h2 class="text-4xl font-bold mb-4">Aprende Programación Jugando</h2>
+      <p class="text-lg mb-6">Transformamos el estudio en una experiencia divertida y creativa.</p>
+      <button onclick="scrollToSection('objetivo')" class="bg-[#D2B48C] hover:bg-[#A57E5A] text-[#5A3A2E] px-6 py-2 rounded font-semibold">Conoce más</button>
+    </div>
+  </section>
+
 </body>
 </html>
