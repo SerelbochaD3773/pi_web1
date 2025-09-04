@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vulcano App</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="image/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="./src/assets/image/favicon.ico" type="image/x-icon" />
 </head>
 <body class="bg-[#C19A6B] text-white font-sans">
 
@@ -13,7 +13,7 @@
   <nav class="bg-[#714C3A] border-b border-[#5A3A2E]">
     <div class="max-w-screen-xl mx-auto flex justify-between items-center p-4">
       <a href="#" class="flex items-center space-x-3">
-        <img src="image/vulcano.png" class="h-8" alt="Logo Vulcano" />
+        <img src="./src/assets/image/logo.png" class="h-8" alt="Logo Vulcano" />
         <span class="text-2xl font-semibold">Vulcano APP</span>
       </a>
       <ul class="flex gap-6">
@@ -71,6 +71,23 @@
       </div>
     </div>
   </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-16 px-6 bg-[#A57E5A]">
+    <h3 class="text-3xl font-semibold mb-6">📬 Contáctenos</h3>
+    <form id="contactForm" class="space-y-4 max-w-md mx-auto">
+      <input type="text" placeholder="Nombre" class="w-full p-2 rounded text-black" required />
+      <input type="email" placeholder="Correo electrónico" class="w-full p-2 rounded text-black" required />
+      <textarea placeholder="Mensaje" class="w-full p-2 rounded text-black" rows="4" required></textarea>
+      <button type="submit" class="bg-[#714C3A] hover:bg-[#5A3A2E] text-white px-4 py-2 rounded">Enviar</button>
+    </form>
+    <p id="formMessage" class="text-white mt-4 text-center hidden">¡Gracias por tu mensaje!</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#5A3A2E] text-white text-center py-4">
+    <p>&copy; 2025 Vulcano App. Todos los derechos reservados.</p>
+  </footer>
 
 </body>
 </html>
