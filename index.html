@@ -1,93 +1,175 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vulcano App</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="./src/assets/image/favicon.ico" type="image/x-icon" />
-</head>
-<body class="bg-[#C19A6B] text-white font-sans">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./src/styles/index.css">
+  <title>Vulcano APP</title>
+</head>
+
+<body class="bg-[#C19A6B] text-white">
   <!-- Navbar -->
-  <nav class="bg-[#714C3A] border-b border-[#5A3A2E]">
-    <div class="max-w-screen-xl mx-auto flex justify-between items-center p-4">
-      <a href="#" class="flex items-center space-x-3">
-        <img src="./src/assets/image/logo.png" class="h-8" alt="Logo Vulcano" />
-        <span class="text-2xl font-semibold">Vulcano APP</span>
+  <nav class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="./src/assets/image/vulcano.png" class="h-8" alt="Flowbite Logo" />
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
       </a>
-      <ul class="flex gap-6">
-        <li><a href="#inicio" class="hover:text-[#D2B48C]">Inicio</a></li>
-        <li><a href="#objetivo" class="hover:text-[#D2B48C]">Nuestro Proyecto</a></li>
-        <li><a href="public/aboutus.html" class="hover:text-[#D2B48C]">Nuestro Equipo</a></li>
-        <li><a href="..//pi_web1/public/multimedia.html" class="hover:text-[#D2B48C]">Multimedia</a></li>
-        <li><a href="#contacto" class="hover:text-[#D2B48C]">Contacto</a></li>
-      </ul>
-      <button class="bg-[#5A3A2E] hover:bg-[#A57E5A] px-4 py-2 rounded text-sm">Login</button>
+      <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <button type="button"
+          class="text-white bg-[#714C3A] hover:bg-[#C19A6B] focus:ring-4 focus:outline-none focus:ring-[#C19A6B] font-medium rounded-lg text-sm px-4 py-2 text-center border-gray-200 dark:bg-[#5a3a2e] dark:border-gray-700 dark:hover:bg-[#A57E5A]">
+          Login
+        </button>
+      </div>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+        <ul class="flex flex-col md:space-x-8 rtl:space-x-reverse md:flex-row">
+          <li><a href=""
+              class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Nuestro
+              Proyecto</a></li>
+          <li><a href=""
+              class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Nuestro
+              Equipo</a></li>
+          <li><a href=""
+              class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Multimedia</a>
+          </li>
+          <li><a href=""
+              class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Contactenos</a>
+          </li>
+        </ul>
+
+      </div>
     </div>
   </nav>
-  
-  <!-- Hero Section -->
-  <section id="inicio" class="relative h-screen flex items-center justify-center text-center">
-    <div class="absolute inset-0 overflow-hidden">
-      <video class="w-full h-full object-cover" autoplay muted loop>
-        <source src="Videos/Vulcano App Aprende Programacin Jugando_free.mp4" type="video/mp4" />
+  <!-- forked from: https://codepen.io/cuonoj/pen/JjPmMaB -->
+  <section class="relative h-screen flex flex-col items-center justify-center text-center text-white">
+    <div class="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
+      <video class="min-w-full min-h-full absolute object-cover"
+        src="./src/assets/videos/Vulcano App Aprende Programacin Jugando_free.mp4" type="video/mp4" autoplay muted loop>
       </video>
-      <div class="absolute inset-0 bg-[#714C3A]/60 z-10"></div>
-    </div>
-    <div class="relative z-20 px-6">
-      <h2 class="text-4xl font-bold mb-4">Aprende Programación Jugando</h2>
-      <p class="text-lg mb-6">Transformamos el estudio en una experiencia divertida y creativa.</p>
-      <button onclick="scrollToSection('objetivo')" class="bg-[#D2B48C] hover:bg-[#A57E5A] text-[#5A3A2E] px-6 py-2 rounded font-semibold">Conoce más</button>
     </div>
   </section>
 
-  <!-- Objetivo del Proyecto -->
-  <section id="objetivo" class="py-16 px-6 bg-[#A57E5A]">
-    <h3 class="text-3xl font-semibold mb-4">🎯 Objetivo del Proyecto</h3>
-    <p class="mb-6">Desarrollar una plataforma digital de gamificación académica para fortalecer el aprendizaje en desarrollo de software.</p>
-    <ul class="list-disc pl-6 space-y-2">
-      <li>Diseñar actividades lúdicas que refuercen conocimientos.</li>
-      <li>Aplicar metodologías ágiles en el desarrollo.</li>
-      <li>Evaluar y mejorar la interacción educativa.</li>
-    </ul>
-  </section>
-
-  <!-- Nuestro Equipo -->
-  <section id="equipo" class="py-16 px-6 bg-[#714C3A]">
-    <h3 class="text-3xl font-semibold mb-6">👥 Nuestro Equipo</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-[#C19A6B] p-4 rounded shadow text-[#5A3A2E]">
-        <h4 class="font-bold">Ana Torres</h4>
-        <p>Desarrolladora Frontend</p>
-      </div>
-      <div class="bg-[#C19A6B] p-4 rounded shadow text-[#5A3A2E]">
-        <h4 class="font-bold">Carlos Mejía</h4>
-        <p>Diseñador UX/UI</p>
-      </div>
-      <div class="bg-[#C19A6B] p-4 rounded shadow text-[#5A3A2E]">
-        <h4 class="font-bold">Laura Gómez</h4>
-        <p>Scrum Master</p>
+  <!-- -- Sección -- -->
+  <div class="flex h-96 justify-center items-center bg-[#5A3A2E] dark:bg-[#3E2723]">
+    <div class="text-center max-w-3xl mx-6">
+      <p class="my-2 text-xs tracking-widest text-[#C19A6B] uppercase">
+        Aprende Jugando
+      </p>
+      <h1 class="my-2 text-2xl font-bold tracking-tight text-[#F3E5AB] md:text-4xl dark:text-[#D2B48C]">
+        Juegos Interactivos para todos
+      </h1>
+      <div>
+        <p class="max-w-xl mx-auto my-2 text-sm text-[#E2C799] md:leading-relaxed md:text-lg dark:text-[#C19A6B]">
+          Descubre una forma divertida de mejorar tus habilidades en programación, metodologías ágiles, Flexbox,
+          Java y más. Aprende mientras juegas con desafíos interactivos que pondrán a prueba tu lógica y creatividad.
+        </p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Contacto -->
-  <section id="contacto" class="py-16 px-6 bg-[#A57E5A]">
-    <h3 class="text-3xl font-semibold mb-6">📬 Contáctenos</h3>
-    <form id="contactForm" class="space-y-4 max-w-md mx-auto">
-      <input type="text" placeholder="Nombre" class="w-full p-2 rounded text-black" required />
-      <input type="email" placeholder="Correo electrónico" class="w-full p-2 rounded text-black" required />
-      <textarea placeholder="Mensaje" class="w-full p-2 rounded text-black" rows="4" required></textarea>
-      <button type="submit" class="bg-[#714C3A] hover:bg-[#5A3A2E] text-white px-4 py-2 rounded">Enviar</button>
-    </form>
-    <p id="formMessage" class="text-white mt-4 text-center hidden">¡Gracias por tu mensaje!</p>
-  </section>
+  <!-- Cards juegos -->
+  <div class="text-center">
+    <h1 class="text-4xl font-bold text-white dark:text-white">Aprende y practica con las opciones de juego disponibles
+    </h1>
+    <br>
+    <div class="flex flex-wrap justify-center gap-4">
+      <!-- Card 1 -->
+      <div
+        class="max-w-sm bg-[#C19A6B] border border-gray-200 rounded-lg shadow-sm dark:bg-[#A57E5A] dark:border-gray-700">
+        <a href="https://quizizz.com/embed/quiz/681ec2e7a20942f83c408d44"><img class="rounded-t-lg"
+            src="./src/assets/image/Metodologia Agile.png" alt="Flexbox" /></a>
+        <div class="p-5">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Metodologia Agile </h5>
+          <p class="mb-3 font-normal text-white">Desafía tu dominio en metodologías ágiles con este quizz. Responde
+            preguntas clave y demuestra cuánto sabes. ¿Aceptas el desafío?</p>
+          <a href="https://quizizz.com/embed/quiz/681ec2e7a20942f83c408d44"
+            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#5A3A2E] rounded-lg hover:bg-[#714C3A]">
+            Ingresar
+          </a>
+        </div>
+      </div>
 
-  <!-- Footer -->
-  <footer class="bg-[#5A3A2E] text-white text-center py-4">
-    <p>&copy; 2025 Vulcano App. Todos los derechos reservados.</p>
-  </footer>
+      <!-- Card 2 -->
+      <div
+        class="max-w-sm bg-[#C19A6B] border border-gray-200 rounded-lg shadow-sm dark:bg-[#A57E5A] dark:border-gray-700">
+        <a href="https://quizizz.com/embed/quiz/5f4eb517fdad49001b304276"><img class="rounded-t-lg"
+            src="./src/assets/image/Desarrollo web 5.png" alt="Desarrollo" /></a>
+        <div class="p-5">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Desarrollo de Web </h5>
+          <p class="mb-3 font-normal text-white">Pon a prueba tu destreza en desarrollo web con este quizz de HTML.
+            ¿Listo para el reto? Demuestra tu conocimiento.</p>
+          <a href="https://quizizz.com/embed/quiz/5f4eb517fdad49001b304276"
+            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#5A3A2E] rounded-lg hover:bg-[#714C3A]">
+            Ingresar
+          </a>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div
+        class="max-w-sm bg-[#C19A6B] border border-gray-200 rounded-lg shadow-sm dark:bg-[#A57E5A] dark:border-gray-700">
+        <a href="https://quizizz.com/embed/quiz/671a3d865dd340cf53d564a5"><img class="rounded-t-lg" src="./src/assets/image/Java.png"
+            alt="Logica" /></a>
+        <div class="p-5">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Lógica de Programación</h5>
+          <p class="mb-3 font-normal text-white">Evalúa tus conocimientos en estructuras de control, algoritmos y
+            patrones lógicos con este quizz. ¿Lograrás acertar todas las respuestas? </p>
+          <a href="https://quizizz.com/embed/quiz/671a3d865dd340cf53d564a5"
+            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#5A3A2E] rounded-lg hover:bg-[#714C3A]">
+            Ingresar
+          </a>
+        </div>
+      </div>
 
+      <!-- Card 4 -->
+      <div
+        class="max-w-sm bg-[#C19A6B] border border-gray-200 rounded-lg shadow-sm dark:bg-[#A57E5A] dark:border-gray-700">
+        <a href="https://flexboxfroggy.com/#es"><img class="rounded-t-lg" src="./src/assets/image/Flexbox.png" alt="Flexbox" /></a>
+        <div class="p-5">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Flexbox</h5>
+          <p class="mb-3 font-normal text-white">Practica CSS Flexbox con un juego interactivo. Domina alineación y
+            distribución de elementos de forma divertida mientras avanzas.</p>
+          <a href="https://flexboxfroggy.com/#es"
+            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#5A3A2E] rounded-lg hover:bg-[#714C3A]">
+            Ingresar
+          </a>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Footer -->
+    <footer class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700 py-4 w-full">
+      <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <a href="./index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+            <img src="./src/assets/image/vulcano.png" class="h-8" alt="Flowbite Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
+          </a>
+          <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 dark:text-white">
+            <li>
+              <a href="./public/aboutus.html" class="hover:underline me-4 md:me-6">Nuestro Proyecto</a>
+            </li>
+            <li>
+              <a href="./public/nosotros.html" class="hover:underline me-4 md:me-6">Nuestro Equipo</a>
+            </li>
+            <li>
+              <a href="./public/multimedia.html" class="hover:underline me-4 md:me-6">Multimedia</a>
+            </li>
+            <li>
+              <a href="./public/notes.html" class="hover:underline">Contactanos</a>
+            </li>
+          </ul>
+        </div>
+        <hr class="my-6 border-white sm:mx-auto dark:border-white lg:my-8" />
+        <span class="block text-sm text-white sm:text-center dark:text-white">© 2025 <a href="https://flowbite.com/"
+            class="hover:underline">Vulcano APP™</a>. All Rights Reserved.</span>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
+
 </html>
