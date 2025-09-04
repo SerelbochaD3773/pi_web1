@@ -1,180 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Nuestro Proyecto</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Nuestro Proyecto</title>
 </head>
+
 <body class="bg-[#C19A6B] text-white flex flex-col min-h-screen">
 
-<!-- Navbar -->
+  <!-- Navbar -->
 
-<nav class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="../index.html" class="flex items-center space-x-3 rtl:space-x-reverse">  
-      <img src="../image/vulcano.png" class="h-8" alt="Flowbite Logo" />
-      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
-  </a>
-  <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-   <button type="button" class="text-white bg-[#714C3A] hover:bg-[#C19A6B] focus:ring-4 focus:outline-none focus:ring-[#C19A6B] font-medium rounded-lg text-sm px-4 py-2 text-center border-gray-200 dark:bg-[#5a3a2e] dark:border-gray-700 dark:hover:bg-[#A57E5A]">
-    Login</button>
-    <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
-    <span class="sr-only">Open main menu</span>
-    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/></svg>
-    </button>
-  </div>
-  <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
-    <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
-      <li>
-    <a href="../index.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Inicio</a>
-      <li>
-      <li>
-    <a href="../pages/nosotros.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Nuestro Equipo</a>
-      </li>
-      <li>
-    <a href="../pages/multimedia.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700"> Multimedia</a>
-      </li>
-      <li>
-     <a href="../pages/contactanos.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Contactanos</a>
-      </li>
-    </ul>
-  </div>
-  </div>
-</nav>
-
-
-<!-- Descripción Section -->
-
-<section class="text-white body-font">
-    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-        <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
-                Vulcano App:
-                <br class="hidden lg:inline-block">Aprendizaje Interactivo a Través de la Gamificación.
-            </h1>
-            <p class="mb-8 leading-relaxed text-white">
-                Vulcano App es una plataforma de gamificación educativa diseñada para hacer del aprendizaje una experiencia interactiva y divertida. A través de juegos y desafíos, los estudiantes consolidan los conocimientos adquiridos en el primer semestre de la carrera técnica laboral en desarrollo de software, fortaleciendo su lógica y creatividad mientras juegan.
-            </p>
-        </div>
-        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-            <video class="w-full h-auto" controls autoplay muted loop>
-                <source src="../Videos/Vulcano App Aprende Programacin de Manera Divertida_free.mp4" type="video/mp4">
-                Tu navegador no soporta el elemento de video.
-            </video>
-        </div>
+  <nav class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="../index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="../image/vulcano.png" class="h-8" alt="Flowbite Logo" />
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
+      </a>
+      <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <button type="button"
+          class="text-white bg-[#714C3A] hover:bg-[#C19A6B] focus:ring-4 focus:outline-none focus:ring-[#C19A6B] font-medium rounded-lg text-sm px-4 py-2 text-center border-gray-200 dark:bg-[#5a3a2e] dark:border-gray-700 dark:hover:bg-[#A57E5A]">
+          Login</button>
+        <button data-collapse-toggle="navbar-cta" type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="navbar-cta" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15" />
+          </svg>
+        </button>
+      </div>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+        <ul
+          class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
+          <li>
+            <a href="../index.html"
+              class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Inicio</a>
+          <li>
+          <li>
+            <a href="../pages/nosotros.html"
+              class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Nuestro
+              Equipo</a>
+          </li>
+          <li>
+            <a href="../pages/multimedia.html"
+              class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">
+              Multimedia</a>
+          </li>
+          <li>
+            <a href="../pages/contactanos.html"
+              class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Contactanos</a>
+          </li>
+        </ul>
+      </div>
     </div>
-</section>
+  </nav>
 
 
-<!-- Detalle del proyecto -->
+  <!-- Descripción Section -->
 
-<section class="bg-[#5A3A2E] text-white py-12 px-8 rounded-lg shadow-lg max-w-4xl mx-auto">
+  <section class="text-white body-font">
+    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+      <div
+        class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
+          Vulcano App:
+          <br class="hidden lg:inline-block">Aprendizaje Interactivo a Través de la Gamificación.
+        </h1>
+        <p class="mb-8 leading-relaxed text-white">
+          Vulcano App es una plataforma de gamificación educativa diseñada para hacer del aprendizaje una experiencia
+          interactiva y divertida. A través de juegos y desafíos, los estudiantes consolidan los conocimientos
+          adquiridos en el primer semestre de la carrera técnica laboral en desarrollo de software, fortaleciendo su
+          lógica y creatividad mientras juegan.
+        </p>
+      </div>
+      <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+        <video class="w-full h-auto" controls autoplay muted loop>
+          <source src="../src/assets/video/Vulcano App Aprende Programacin de Manera Divertida_free.mp4" type="video/mp4">
+          Tu navegador no soporta el elemento de video.
+        </video>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Detalle del proyecto -->
+
+  <section class="bg-[#5A3A2E] text-white py-12 px-8 rounded-lg shadow-lg max-w-4xl mx-auto">
     <h2 class="text-3xl font-bold text-center mb-6">Objetivo del Proyecto</h2>
     <p class="text-lg leading-relaxed">
-        Desarrollar e implementar una plataforma digital de gamificación académica para la 
-        carrera técnica laboral en desarrollo de software, con el fin de fortalecer el 
-        aprendizaje de los contenidos teóricos del primer semestre, promoviendo la interacción y 
-        motivación de los estudiantes a través de dinámicas lúdicas y desafíos educativos.
+      Desarrollar e implementar una plataforma digital de gamificación académica para la
+      carrera técnica laboral en desarrollo de software, con el fin de fortalecer el
+      aprendizaje de los contenidos teóricos del primer semestre, promoviendo la interacción y
+      motivación de los estudiantes a través de dinámicas lúdicas y desafíos educativos.
     </p>
 
     <h3 class="text-2xl font-semibold mt-8 mb-4">Objetivos Específicos</h3>
     <ul class="list-disc pl-6 space-y-3 text-lg">
-        <li>Diseñar y planificar actividades lúdicas y dinámicas grupales e individuales dentro de la plataforma digital, que refuercen los conocimientos adquiridos en las materias del primer semestre.</li>
-        <li>Utilizar metodologías ágiles en el desarrollo de la plataforma web, asegurando la adaptación continua del proyecto y optimización de los procesos para mejorar la experiencia educativa de los estudiantes.</li>
-        <li>Evaluar y ajustar constantemente el funcionamiento de la plataforma, con el fin de mejorar la interacción entre los estudiantes y los contenidos.</li>
+      <li>Diseñar y planificar actividades lúdicas y dinámicas grupales e individuales dentro de la plataforma digital,
+        que refuercen los conocimientos adquiridos en las materias del primer semestre.</li>
+      <li>Utilizar metodologías ágiles en el desarrollo de la plataforma web, asegurando la adaptación continua del
+        proyecto y optimización de los procesos para mejorar la experiencia educativa de los estudiantes.</li>
+      <li>Evaluar y ajustar constantemente el funcionamiento de la plataforma, con el fin de mejorar la interacción
+        entre los estudiantes y los contenidos.</li>
     </ul>
-</section>
+  </section>
 
-<!-- Seccion Valores -->
-<section class="bg-[#C19A6B] py-12 md:py-20"> 
-  <div class="container mx-auto px-4">
-    <!-- Título de la Sección -->
-    <h2 class="text-3xl sm:text-4xl font-bold text-center text-white-800 mb-12 md:mb-16">
-      Nuestros Valores
-    </h2>
+  <!-- Seccion Valores -->
+  <section class="bg-[#C19A6B] py-12 md:py-20">
+    <div class="container mx-auto px-4">
+      <!-- Título de la Sección -->
+      <h2 class="text-3xl sm:text-4xl font-bold text-center text-white-800 mb-12 md:mb-16">
+        Nuestros Valores
+      </h2>
 
-    <!-- Contenedor de los Valores (Grid Responsivo) -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+      <!-- Contenedor de los Valores (Grid Responsivo) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
 
-      <!-- Valor 1: Integridad -->
-      <div class="bg-[#5A3A2E] p-6 rounded-xl shadow-lg text-center flex flex-col items-center transition-transform duration-300 hover:scale-105">
-        <!-- Icono -->
-        <div class="bg-sky-100 text-sky-600 p-4 rounded-full mb-4 inline-block">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-          </svg>
+        <!-- Valor 1: Integridad -->
+        <div
+          class="bg-[#5A3A2E] p-6 rounded-xl shadow-lg text-center flex flex-col items-center transition-transform duration-300 hover:scale-105">
+          <!-- Icono -->
+          <div class="bg-sky-100 text-sky-600 p-4 rounded-full mb-4 inline-block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-10 h-10">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-white-700 mb-2">Integridad</h3>
+          <p class="text-white-600 text-sm leading-relaxed">
+            Actuamos con honestidad, transparencia y ética en todas nuestras interacciones y decisiones.
+          </p>
         </div>
-        <h3 class="text-xl font-semibold text-white-700 mb-2">Integridad</h3>
-        <p class="text-white-600 text-sm leading-relaxed">
-          Actuamos con honestidad, transparencia y ética en todas nuestras interacciones y decisiones.
-        </p>
-      </div>
 
-      <!-- Valor 2: Trabajo en Equipo -->
-      <div class="bg-[#5A3A2E] p-6 rounded-xl shadow-lg text-center flex flex-col items-center transition-transform duration-300 hover:scale-105">
-        <!-- Icono -->
-        <div class="bg-emerald-100 text-emerald-600 p-4 rounded-full mb-4 inline-block">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-3.741-5.208M19.5 0v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125h-.375m1.5-3.375H18a.75.75 0 00-.75.75v.75c0 .414.336.75.75.75h.75m-1.5-.75H15V3.75c0-.414.336-.75.75-.75h.75M15 10.5h.75V12h-.75V10.5m0 3h.75V15h-.75V13.5M15 16.5h.75V18h-.75V16.5m-1.5 .375h.75c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125h-.75m-1.5-.75H12V21H6.75A2.25 2.25 0 014.5 18.75V16.5M13.5 12h1.5V9h-1.5V12m0 3h1.5V12h-1.5V15m-3-3H9V9H7.5V12m3 0H9V15H7.5V15m-3 0H6V12H4.5V15M4.5 18V15H3V18c0 .414.336.75.75.75H4.5z" />
-          </svg>
+        <!-- Valor 2: Trabajo en Equipo -->
+        <div
+          class="bg-[#5A3A2E] p-6 rounded-xl shadow-lg text-center flex flex-col items-center transition-transform duration-300 hover:scale-105">
+          <!-- Icono -->
+          <div class="bg-emerald-100 text-emerald-600 p-4 rounded-full mb-4 inline-block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-10 h-10">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-3.741-5.208M19.5 0v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125h-.375m1.5-3.375H18a.75.75 0 00-.75.75v.75c0 .414.336.75.75.75h.75m-1.5-.75H15V3.75c0-.414.336-.75.75-.75h.75M15 10.5h.75V12h-.75V10.5m0 3h.75V15h-.75V13.5M15 16.5h.75V18h-.75V16.5m-1.5 .375h.75c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125h-.75m-1.5-.75H12V21H6.75A2.25 2.25 0 014.5 18.75V16.5M13.5 12h1.5V9h-1.5V12m0 3h1.5V12h-1.5V15m-3-3H9V9H7.5V12m3 0H9V15H7.5V15m-3 0H6V12H4.5V15M4.5 18V15H3V18c0 .414.336.75.75.75H4.5z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-white-700 mb-2">Trabajo en Equipo</h3>
+          <p class="text-white-600 text-sm leading-relaxed">
+            Colaboramos y nos apoyamos mutuamente, sumando talentos para alcanzar objetivos comunes.
+          </p>
         </div>
-        <h3 class="text-xl font-semibold text-white-700 mb-2">Trabajo en Equipo</h3>
-        <p class="text-white-600 text-sm leading-relaxed">
-          Colaboramos y nos apoyamos mutuamente, sumando talentos para alcanzar objetivos comunes.
-        </p>
-      </div>
 
-      <!-- Valor 3: Innovación -->
-      <div class="bg-[#5A3A2E] p-6 rounded-xl shadow-lg text-center flex flex-col items-center transition-transform duration-300 hover:scale-105">
-        <!-- Icono -->
-        <div class="bg-amber-100 text-amber-600 p-4 rounded-full mb-4 inline-block">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.354a15.055 15.055 0 01-4.5 0M12 18c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 14.25H14.25M9.75 11.25H14.25M9.75 8.25H14.25M12 21a9 9 0 110-18 9 9 0 010 18z" />
-          </svg>
+        <!-- Valor 3: Innovación -->
+        <div
+          class="bg-[#5A3A2E] p-6 rounded-xl shadow-lg text-center flex flex-col items-center transition-transform duration-300 hover:scale-105">
+          <!-- Icono -->
+          <div class="bg-amber-100 text-amber-600 p-4 rounded-full mb-4 inline-block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-10 h-10">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.354a15.055 15.055 0 01-4.5 0M12 18c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z" />
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M9.75 14.25H14.25M9.75 11.25H14.25M9.75 8.25H14.25M12 21a9 9 0 110-18 9 9 0 010 18z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-white-700 mb-2">Innovación</h3>
+          <p class="text-white-600 text-sm leading-relaxed">
+            Buscamos constantemente nuevas ideas y soluciones creativas para superar desafíos y mejorar.
+          </p>
         </div>
-        <h3 class="text-xl font-semibold text-white-700 mb-2">Innovación</h3>
-        <p class="text-white-600 text-sm leading-relaxed">
-          Buscamos constantemente nuevas ideas y soluciones creativas para superar desafíos y mejorar.
-        </p>
-      </div>
 
-      <!-- Valor 4: Aprendizaje Continuo -->
-      <div class="bg-[#5A3A2E] p-6 rounded-xl shadow-lg text-center flex flex-col items-center transition-transform duration-300 hover:scale-105">
-        <!-- Icono -->
-        <div class="bg-indigo-100 text-indigo-600 p-4 rounded-full mb-4 inline-block">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-          </svg>
+        <!-- Valor 4: Aprendizaje Continuo -->
+        <div
+          class="bg-[#5A3A2E] p-6 rounded-xl shadow-lg text-center flex flex-col items-center transition-transform duration-300 hover:scale-105">
+          <!-- Icono -->
+          <div class="bg-indigo-100 text-indigo-600 p-4 rounded-full mb-4 inline-block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-10 h-10">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-white-700 mb-2">Aprendizaje Continuo</h3>
+          <p class="text-white-600 text-sm leading-relaxed">
+            Fomentamos la curiosidad, el desarrollo de habilidades y la adaptación al cambio constante.
+          </p>
         </div>
-        <h3 class="text-xl font-semibold text-white-700 mb-2">Aprendizaje Continuo</h3>
-        <p class="text-white-600 text-sm leading-relaxed">
-          Fomentamos la curiosidad, el desarrollo de habilidades y la adaptación al cambio constante.
-        </p>
-      </div>
 
-      <!-- Valor 5: Compromiso -->
-      <div class="bg-[#5A3A2E] p-6 rounded-xl shadow-lg text-center flex flex-col items-center transition-transform duration-300 hover:scale-105">
-        <!-- Icono -->
-        <div class="bg-rose-100 text-rose-600 p-4 rounded-full mb-4 inline-block">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-          </svg>
+        <!-- Valor 5: Compromiso -->
+        <div
+          class="bg-[#5A3A2E] p-6 rounded-xl shadow-lg text-center flex flex-col items-center transition-transform duration-300 hover:scale-105">
+          <!-- Icono -->
+          <div class="bg-rose-100 text-rose-600 p-4 rounded-full mb-4 inline-block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-10 h-10">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-white-700 mb-2">Compromiso</h3>
+          <p class="text-white-600 text-sm leading-relaxed">
+            Nos dedicamos con pasión y responsabilidad a nuestros proyectos, clientes y al éxito del equipo.
+          </p>
         </div>
-        <h3 class="text-xl font-semibold text-white-700 mb-2">Compromiso</h3>
-        <p class="text-white-600 text-sm leading-relaxed">
-          Nos dedicamos con pasión y responsabilidad a nuestros proyectos, clientes y al éxito del equipo.
-        </p>
-      </div>
 
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Footer -->
+
+  <footer class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700 py-4 w-full mt-auto">
+    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <a href="../index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+          <img src="../image/vulcano.png" class="h-8" alt="Flowbite Logo" />
+          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
+        </a>
+        <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 dark:text-white">
+          <li>
+            <a href="../pages/nosotros.html" class="hover:underline me-4 md:me-6">Nuestro Equipo</a>
+          </li>
+          <li>
+            <a href="../pages/multimedia.html" class="hover:underline me-4 md:me-6">Multimedia</a>
+          </li>
+          <li>
+            <a href="../pages/contactanos.html" class="hover:underline">Contactanos</a>
+          </li>
+        </ul>
+      </div>
+      <hr class="my-6 border-white sm:mx-auto dark:border-white lg:my-8" />
+      <span class="block text-sm text-white sm:text-center dark:text-white">© 2025 <a href="https://flowbite.com/"
+          class="hover:underline">Vulcano APP™</a>. All Rights Reserved.</span>
+    </div>
+  </footer>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
+
 </html>
