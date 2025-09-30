@@ -11,39 +11,39 @@
 </head>
 
 <body class="bg-[#C19A6B] text-white">
-  <!-- Navbar -->
-  <nav class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
+  <nav class="main-nav border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <a href="index.html" class="logo flex items-center space-x-3 rtl:space-x-reverse">
         <img src="./src/assets/image/vulcano.png" class="h-8" alt="Flowbite Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
       </a>
-      <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-        <button type="button"
-          class="text-white bg-[#714C3A] hover:bg-[#C19A6B] focus:ring-4 focus:outline-none focus:ring-[#C19A6B] font-medium rounded-lg text-sm px-4 py-2 text-center border-gray-200 dark:bg-[#5a3a2e] dark:border-gray-700 dark:hover:bg-[#A57E5A]">
-          Login
-        </button>
-      </div>
-      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
-        <ul class="flex flex-col md:space-x-8 rtl:space-x-reverse md:flex-row">
-          <li><a href="./public/aboutus.html"
+      <ul class="flex flex-col md:space-x-8 rtl:space-x-reverse md:flex-row">
+        <li><a href="./public/ourProject.html"
               class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Nuestro
               Proyecto</a></li>
-          <li><a href="./public/nosotros.html"
+          <li><a href="./public/aboutus.html"
               class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Nuestro
               Equipo</a></li>
           <li><a href="./public/multimedia.html"
               class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Multimedia</a>
           </li>
-          <li><a href="./public/contacto.html"
+          <li><a href="./public/contact.html"
               class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Contactenos</a>
           </li>
-        </ul>
-
+      </ul>
+      <div class="button-login">
+        <button type="button" class="text-white bg-[#714C3A] hover:bg-[#C19A6B] focus:ring-4 focus:outline-none focus:ring-[#C19A6B] font-medium rounded-lg text-sm px-4 py-2 text-center border-gray-200 dark:bg-[#5a3a2e] dark:border-gray-700 dark:hover:bg-[#A57E5A]">Login</button>
       </div>
+
     </div>
+
   </nav>
-  <!-- forked from: https://codepen.io/cuonoj/pen/JjPmMaB -->
+  <button id="button-menu" class="button-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
   <section class="relative h-screen flex flex-col items-center justify-center text-center text-white">
     <div class="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
       <video class="min-w-full min-h-full absolute object-cover"
@@ -151,25 +151,27 @@
           </a>
           <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 dark:text-white">
             <li>
-              <a href="./public/aboutus.html" class="hover:underline me-4 md:me-6">Nuestro Proyecto</a>
+              <a href="./public/ourProject.html" class="hover:underline me-4 md:me-6">Nuestro Proyecto</a>
             </li>
             <li>
-              <a href="./public/nosotros.html" class="hover:underline me-4 md:me-6">Nuestro Equipo</a>
+              <a href="./public/aboutus.html" class="hover:underline me-4 md:me-6">Nuestro Equipo</a>
             </li>
             <li>
               <a href="./public/multimedia.html" class="hover:underline me-4 md:me-6">Multimedia</a>
             </li>
             <li>
-              <a href="./public/notes.html" class="hover:underline">Contactanos</a>
+              <a href="./public/contact.html" class="hover:underline">Contactanos</a>
             </li>
           </ul>
         </div>
         <hr class="my-6 border-white sm:mx-auto dark:border-white lg:my-8" />
-        <span class="block text-sm text-white sm:text-center dark:text-white">© 2025 <a href="https://flowbite.com/"
+        <span class="block text-sm text-white sm:text-center dark:text-white">© <span id="CurrentYear"></span> <a href="https://flowbite.com/"
             class="hover:underline">Vulcano APP™</a>. All Rights Reserved.</span>
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="./src/scripts/currentYear.js"></script>
+    <script src="./src/scripts/hamburgerMenu.js"></script>
 </body>
 
 </html>
