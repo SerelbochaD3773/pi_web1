@@ -1,0 +1,72 @@
+/* Utilities used by the About Us flip cards
+   These replicate the Tailwind plugin utilities defined in src/scripts/aboutus.js
+   and also provide the group-hover behaviour selector that Tailwind normally
+   emits (escaped colon). Adding this file lets the flip effect work in the
+   browser without a Tailwind build step. */
+
+.perspective {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.my-rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* When the parent with class "group" is hovered, apply the rotation to the
+   child that contains the literal class name "group-hover:my-rotate-y-180".
+   Note the escaped colon in the selector to match the class name in the HTML. */
+.group:hover .group-hover\:my-rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Smooth transitions for the rotated element (1000ms like duration-1000) */
+.group .duration-1000 {
+  transition: transform 1s ease;
+}
+
+/* Make sure the front/back faces occupy full space */
+.backface-hidden, .group-hover\:my-rotate-y-180 {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Card visual enhancements: rounded corners, subtle shadow, hover lift */
+.card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.22);
+  transition: transform 250ms ease, box-shadow 250ms ease;
+  background-clip: padding-box;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.30);
+}
+.card .backface-hidden,
+.card .group-hover\:my-rotate-y-180 {
+  border-radius: 12px;
+}
+.card img {
+  display: block;
+  border-radius: 12px;
+}
+
+/* subtle glossy overlay to soften the white backface */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
+  mix-blend-mode: overlay;
+}
