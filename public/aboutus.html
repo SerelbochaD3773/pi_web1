@@ -48,6 +48,7 @@
 <!-- --><!-- Descripcion de la sección -->
 <section class="py-16 bg-[#D2B48C]">
   <div class="max-w-7xl mx-auto px-4">
+
     <!-- Header -->
 <div class="text-center mb-12 px-6 py-8 bg-[#5a3a2e] rounded-lg shadow-lg">
   <h2 class="text-4xl font-bold text-white mb-4">Un Equipo con Determinación y Pasión</h2>
@@ -147,6 +148,80 @@
       <div class="max-w-7xl mx-auto py-8"></div>
     </section>
 
+
+<!-- Formulario de reseñas -->
+
+    <section class="w-full py-12 px-4">
+      <div class="max-w-3xl mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-8 text-[#5a3a2e]">
+        <div class="flex items-center justify-between mb-6">
+          <h1 class="text-2xl font-semibold">Sistema de Reseñas</h1>
+          <span class="text-sm text-[#A57E5A]">Comparte tu opinión sobre nuestro equipo</span>
+        </div>
+
+        <form id="reviewForm" class="grid grid-cols-1 gap-4 mb-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" id="author" name="author" placeholder="Tu nombre" required class="w-full px-4 py-2 border border-[#E6D4C1] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A57E5A] text-[#5a3a2e] bg-white">
+            <select id="rating" name="rating" required class="w-full px-4 py-2 border border-[#E6D4C1] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A57E5A] text-[#5a3a2e] bg-white">
+              <option value="">Puntuación</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <textarea id="comment" name="comment" placeholder="Comentario" required class="w-full px-4 py-3 border border-[#E6D4C1] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A57E5A] text-[#5a3a2e] bg-white"></textarea>
+          <div class="flex gap-3">
+            <button type="submit" class="flex-1 bg-[#714C3A] text-white py-2 rounded-lg font-semibold hover:bg-[#5a3a2e] transition">Enviar</button>
+            <button type="button" id="clearReviews" class="bg-transparent border border-[#E6D4C1] text-[#5a3a2e] px-4 py-2 rounded-lg hover:bg-[#F7EFE6] transition">Limpiar</button>
+          </div>
+          <div id="formError" class="text-red-600 mt-2 text-sm"></div>
+        </form>
+
+        <div class="flex items-center justify-between mb-4">
+          <label for="sort" class="text-sm font-medium">Ordenar por puntuación:</label>
+          <select id="sort" class="px-3 py-1 border border-[#E6D4C1] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A57E5A] text-[#5a3a2e] bg-white">
+            <option value="desc">Mayor a menor</option>
+            <option value="asc">Menor a mayor</option>
+          </select>
+        </div>
+
+        <div id="reviews" class="space-y-4">
+          
+          <!-- Las reseñas se mostrarán aquí -->
+        </div>
+      </div>
+
+      <!-- Modal-->
+      <div id="editModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-2xl p-6 w-full max-w-md text-[#5a3a2e]">
+          <h2 class="text-xl font-semibold mb-4">Editar Reseña</h2>
+          <form id="editForm" class="space-y-4">
+            <input type="text" id="editAuthor" name="author" placeholder="Tu nombre" required class="w-full px-4 py-2 border border-[#E6D4C1] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A57E5A] text-[#5a3a2e] bg-white">
+            <select id="editRating" name="rating" required class="w-full px-4 py-2 border border-[#E6D4C1] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A57E5A] text-[#5a3a2e] bg-white">
+              <option value="">Puntuación</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <textarea id="editComment" name="comment" placeholder="Comentario" required class="w-full px-4 py-2 border border-[#E6D4C1] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A57E5A] text-[#5a3a2e] bg-white"></textarea>
+            <div class="flex gap-2">
+              <button type="submit" class="bg-[#714C3A] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#5a3a2e] transition">Guardar</button>
+              <button type="button" id="cancelEdit" class="bg-gray-300 text-[#5a3a2e] px-4 py-2 rounded-lg font-semibold hover:bg-gray-200 transition">Cancelar</button>
+            </div>
+          </form>
+          <div id="editError" class="text-red-600 mt-2 text-sm"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Espacio entre las secciones de cards y el footer-->
+    <section class="bg-[#D2B48C] w-full">
+      <div class="max-w-7xl mx-auto py-8"></div>
+    </section>
+
 <!-- Footer -->
 
 <footer class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700 py-4 w-full">
@@ -175,5 +250,6 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+<script src="../src/scripts/ReviewForm.js"></script>
 </body>
 </html>
