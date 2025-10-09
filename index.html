@@ -11,38 +11,41 @@
 </head>
 
 <body class="bg-[#C19A6B] text-white">
-  <nav class="main-nav border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="index.html" class="logo flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="./src/assets/image/vulcano.png" class="h-8" alt="Flowbite Logo" />
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
-      </a>
-      <ul class="flex flex-col md:space-x-8 rtl:space-x-reverse md:flex-row">
-        <li><a href="./public/ourProject.html"
-              class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Nuestro
-              Proyecto</a></li>
-          <li><a href="./public/aboutus.html"
-              class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Nuestro
-              Equipo</a></li>
-          <li><a href="./public/multimedia.html"
-              class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Multimedia</a>
-          </li>
-          <li><a href="./public/contact.html"
-              class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Contactenos</a>
-          </li>
-      </ul>
-      <div class="button-login">
-        <button type="button" class="text-white bg-[#714C3A] hover:bg-[#C19A6B] focus:ring-4 focus:outline-none focus:ring-[#C19A6B] font-medium rounded-lg text-sm px-4 py-2 text-center border-gray-200 dark:bg-[#5a3a2e] dark:border-gray-700 dark:hover:bg-[#A57E5A]">Login</button>
-      </div>
-
-    </div>
-
-  </nav>
-  <button id="button-menu" class="button-menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+  <nav class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <a href="../index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="../src/assets/image/vulcano.png" class="h-8" alt="Flowbite Logo" />
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
+  </a>
+  <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+   <button type="button" class="text-white bg-[#714C3A] hover:bg-[#C19A6B] focus:ring-4 focus:outline-none focus:ring-[#C19A6B] font-medium rounded-lg text-sm px-4 py-2 text-center border-gray-200 dark:bg-[#5a3a2e] dark:border-gray-700 dark:hover:bg-[#A57E5A]">
+    Login</button>
+    <a href="./public/register.html" class="text-white bg-[#714C3A] hover:bg-[#C19A6B] focus:ring-4 focus:outline-none focus:ring-[#C19A6B] font-medium rounded-lg text-sm px-4 py-2 text-center border-gray-200 dark:bg-[#5a3a2e] dark:border-gray-700 dark:hover:bg-[#A57E5A]">
+    Regístrese</a>
+    <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
+    <span class="sr-only">Open main menu</span>
+    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/></svg>
+    </button>
+  </div>
+  <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+     <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg bg-[#714C3A] md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:bg-[#714C3A] dark:bg-[#5a3a2e]">
+  <li>
+    <a href="./public/ourProject.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Nuestro Proyecto</a>
+  </li>
+  <li>
+    <a href="./public/aboutus.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Nuestro Equipo</a>
+  </li>
+  <li>
+    <a href="./public/multimedia.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Multimedia</a>
+  </li>
+  <li>
+    <a href="../public/contact.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Contactanos</a>
+  </li>
+    </ul>
+  </div>
+  </div>
+</nav>
 
   <section class="relative h-screen flex flex-col items-center justify-center text-center text-white">
     <div class="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -51,6 +54,7 @@
       </video>
     </div>
   </section>
+
   <!-- -- Sección -- -->
   <div class="flex h-96 justify-center items-center bg-[#5A3A2E] dark:bg-[#3E2723]">
     <div class="text-center max-w-3xl mx-6">
@@ -68,6 +72,7 @@
       </div>
     </div>
   </div>
+
   <!-- Cards juegos -->
   <div class="text-center">
     <h1 class="text-4xl font-bold text-white dark:text-white">Aprende y practica con las opciones de juego disponibles
@@ -89,6 +94,7 @@
           </a>
         </div>
       </div>
+
       <!-- Card 2 -->
       <div
         class="max-w-sm bg-[#C19A6B] border border-gray-200 rounded-lg shadow-sm dark:bg-[#A57E5A] dark:border-gray-700">
@@ -119,6 +125,7 @@
           </a>
         </div>
       </div>
+
       <!-- Card 4 -->
       <div
         class="max-w-sm bg-[#C19A6B] border border-gray-200 rounded-lg shadow-sm dark:bg-[#A57E5A] dark:border-gray-700">
@@ -136,6 +143,7 @@
     </div>
     <br>
     <br>
+
     <!-- Footer -->
     <footer class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700 py-4 w-full">
       <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
@@ -166,7 +174,5 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script src="./src/scripts/currentYear.js"></script>
-    <script src="./src/scripts/hamburgerMenu.js"></script>
 </body>
-
 </html>
