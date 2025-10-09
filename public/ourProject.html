@@ -6,26 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="icon" href="../src/assets/image/favicon.ico" type="image/x-icon">
-    <style>
-      .fade-top, .fade-bottom {
-        position: fixed;
-        left: 0;
-        right: 0;
-        pointer-events: none;
-        z-index: 20;
-      }
-
-      .fade-top {
-        top: 0;
-        background: linear-gradient(to bottom, rgba(193,154,107,1), rgba(193,154,107,0));
-      }
-
-      .fade-bottom {
-        bottom: 0;
-        background: linear-gradient(to top, rgba(193,154,107,1), rgba(193,154,107,0));
-      }
-
-    </style>
+    
     <title>Nuestro Proyecto</title>
   </head>
 
@@ -34,50 +15,40 @@
     <!-- Navbar -->
 
     <nav class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
-      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="../index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="../src/assets/image/vulcano.png" class="h-8" alt="Flowbite Logo" />
-          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
-        </a>
-        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <button type="button"
-            class="text-white bg-[#714C3A] hover:bg-[#C19A6B] focus:ring-4 focus:outline-none focus:ring-[#C19A6B] font-medium rounded-lg text-sm px-4 py-2 text-center border-gray-200 dark:bg-[#5a3a2e] dark:border-gray-700 dark:hover:bg-[#A57E5A]">
-            Login</button>
-          <button data-collapse-toggle="navbar-cta" type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-cta" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M1 1h15M1 7h15M1 13h15" />
-            </svg>
-          </button>
-        </div>
-        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
-          <ul
-            class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
-            <li>
-              <a href="../index.html"
-                class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Inicio</a>
-            <li>
-            <li>
-              <a href="../public/aboutus.html"
-                class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Nuestro
-                Equipo</a>
-            </li>
-            <li>
-              <a href="../public/multimedia.html"
-                class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">
-                Multimedia</a>
-            </li>
-            <li>
-              <a href="../src/scripts/contact.html"
-                class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Contactanos</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <a href="../index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="../src/assets/image/vulcano.png" class="h-8" alt="Flowbite Logo" />
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
+  </a>
+  <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+   <button type="button" class="text-white bg-[#714C3A] hover:bg-[#C19A6B] focus:ring-4 focus:outline-none focus:ring-[#C19A6B] font-medium rounded-lg text-sm px-4 py-2 text-center border-gray-200 dark:bg-[#5a3a2e] dark:border-gray-700 dark:hover:bg-[#A57E5A]">
+    Login</button>
+    <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
+    <span class="sr-only">Open main menu</span>
+    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/></svg>
+    </button>
+  </div>
+  <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+     <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg bg-[#714C3A] md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:bg-[#714C3A] dark:bg-[#5a3a2e]">
+  <li>
+    <a href="../index.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Inicio</a>
+  </li>
+  <li>
+    <a href="../public/aboutus.html"
+     class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Nuestro Equipo</a>
+  </li>
+  <li>
+    <a href="..//public/multimedia.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Multimedia</a>
+  </li>
+  <li>
+    <a href="../public/contact.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Contactanos</a>
+  </li>
+    </ul>
+  </div>
+  </div>
+</nav>
+
 
     <div id="fade-overlay"></div>
     <div id="container">
@@ -249,7 +220,7 @@
               <a href="../public/multimedia.html" class="hover:underline me-4 md:me-6">Multimedia</a>
             </li>
             <li>
-              <a href="../src/scripts/contact.html" class="hover:underline">Contactanos</a>
+              <a href="../public/contact.html" class="hover:underline">Contactanos</a>
             </li>
           </ul>
         </div>
