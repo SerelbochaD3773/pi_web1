@@ -12,22 +12,6 @@ video.addEventListener("mouseleave", () => {
     video.style.boxShadow = "none";
 });
 
-
-document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("container");
-    const fadeBottom = document.createElement("div");
-    fadeBottom.classList.add("fade-bottom");
-    container.appendChild(fadeBottom);
-    function updateFadeHeight() {
-        const fadeHeight = window.innerHeight * 0.1;
-        fadeBottom.style.height = fadeHeight + "px";
-    }
-    updateFadeHeight();
-    window.addEventListener("resize", updateFadeHeight);
-});
-
-
-
 // Controles de Video
 
 
