@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - Vulcano App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Ajustar contraste y añadir box-shadow amarillo -->
+  <style>
+    /* Añadir sombra amarilla intensa al card */
+    #loginCard {
+      box-shadow: 1px 5px 30px rgba(245, 134, 7, 0.95);
+    }
+
+    /* Fondo de la página para un mayor contraste con la "brasa" */
+    body.login-contrast-bg {
+      background-color: #69463a;
+    }
+
+    /* Fondo con degradados animados para efecto lava */
+    :root {
+      --lava1: #FF6B35;
+      --lava2: #D6451E;
+      --lava3: #8B2E16;
+    }
+    .lava-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+      background-color: #ca5216;
+      pointer-events: none;
+      animation: bgPulse 6s ease-in-out infinite;
+    }
+
+    .lava-layer {
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      top: -10%;
+      left: -10%;
+      background-color: rgba(214, 69, 30, 0.04);
+      opacity: 0.9;
+      transform-origin: center;
+      mix-blend-mode: screen;
+      filter: blur(10px);
+      pointer-events: none;
+      animation: layerFloat 8s ease-in-out infinite;
+    }
+
+    @keyframes bgPulse {
+      0% { opacity: 0.06; transform: scale(1); }
+      50% { opacity: 0.10; transform: scale(1.01); }
+      100% { opacity: 0.06; transform: scale(1); }
+    }
+
+    @keyframes layerFloat {
+      0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.88; }
+      50% { transform: translate3d(3%, -2%, 0) scale(1.02); opacity: 0.96; }
+      100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.88; }
+    }
+
+    /* Card animation */
+    .card-appear {
+      transform: translateY(18px);
+      opacity: 0;
+      transition: transform .6s cubic-bezier(.2, .9, .2, 1), opacity .6s;
+    }
+    .card-appear.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    #loginCard {
+      position: relative;
+      z-index: 1;
+      transition: transform 220ms ease, box-shadow 320ms ease;
+      box-shadow: 1px 2px 15px rgba(248, 22, 6, 0.6);
+    }
+
+    #loginCard::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 18px;
+      pointer-events: none;
+      box-shadow: 0 0 0 0 rgba(255, 223, 0, 0);
+      opacity: 0;
+      transition: box-shadow 320ms ease, opacity 320ms ease, transform 320ms ease;
+      transform: scale(1);
+      z-index: -1;
+    }
+
+    #loginCard:hover {
+      transform: translateY(-6px);
+      box-shadow: 1px 10px 60px rgba(245, 144, 29, 0.95);
+    }
+    #loginCard:hover::after {
+      box-shadow: 0 0 30px 18px rgba(248, 78, 35, 0.95), 0 10px 60px rgba(255, 140, 20, 0.35);
+      opacity: 1;
+      transform: scale(1.02);
+    }
+
+    #loginCard.input-focus {
+      transform: translateY(-4px);
+      box-shadow: 1px 8px 50px rgba(240, 150, 16, 0.9);
+    }
+    #loginCard.input-focus::after {
+      box-shadow: 0 0 36px 14px rgba(255, 174, 0, 0.986);
+      opacity: 1;
+      transform: scale(1.01);
+    }
+
+    /* Estilos para el campo de contraseña con ícono de ojo */
+    .password-container {
+      position: relative;
+    }
+    .password-container input {
+      padding-right: 2.5rem; /* Espacio para el ícono */
+    }
+    .password-toggle {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+    .password-toggle svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: #D2B48C;
+    }
+    .password-toggle:hover svg {
+      fill: #A57E5A;
+    }
+  </style>
+</head>
+<body class="min-h-screen font-sans flex items-center justify-center relative text-white login-contrast-bg">
+  <div class="lava-bg" aria-hidden="true"></div>
+  <div class="lava-layer" aria-hidden="true"></div>
+
+  <main class="relative z-10 w-full max-w-md p-6">
+    <section id="loginCard" class="bg-[#5A3A2E]/95 backdrop-blur-sm rounded-lg shadow-xl p-6 card-appear" aria-labelledby="loginTitle" role="region">
+      <header class="mb-4 flex flex-col items-center">
+        <a href="../index.html" class="inline-flex items-center gap-3 mb-3">
+          <img src="/src/assets/imagenes-multimedia/vulcano.png" alt="Logo Vulcano" class="h-8" />
+          <span class="text-2xl font-semibold text-white">Vulcano APP</span>
+        </a>
+        <h1 id="loginTitle" class="text-2xl font-bold">Iniciar sesión</h1>
+        <p class="text-sm text-[#D2B48C]">Accede con tu usuario para continuar</p>
+      </header>
+
+      <form id="loginForm" class="space-y-4" novalidate>
+        <div>
+          <label for="name" class="sr-only">Nombre</label>
+          <input id="name" name="name" type="text" autocomplete="name" required
+                 class="w-full p-3 rounded text-black" placeholder="Nombre" aria-required="true" />
+        </div>
+        <div class="password-container">
+          <label for="password" class="sr-only">Contraseña</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required
+                 class="w-full p-3 rounded text-black" placeholder="Contraseña" aria-required="true" />
+          <button type="button" class="password-toggle" aria-label="Mostrar contraseña" aria-pressed="false">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            </svg>
+          </button>
+        </div>
+
+        <div id="errorMsg" class="text-sm text-red-300 hidden" role="alert" aria-live="assertive"></div>
+
+        <div class="flex items-center justify-between">
+          <button type="submit" id="submitBtn" class="bg-[#D2B48C] hover:bg-[#A57E5A] text-[#5A3A2E] px-4 py-2 rounded font-semibold">
+            Ingresar
+          </button>
+          <a href="../index.html" class="text-sm text-white hover:underline">Volver</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    (function(){
+      // Muestra la card con animación
+      document.addEventListener('DOMContentLoaded', function(){
+        const c = document.getElementById('loginCard');
+        setTimeout(() => c.classList.add('show'), 80);
+      });
+
+      const loginForm = document.getElementById('loginForm');
+      const errorMsg = document.getElementById('errorMsg');
+      const passwordInput = document.getElementById('password');
+      const passwordToggle = document.querySelector('.password-toggle');
+
+      // CORRECCIÓN: separar base URL y recurso
+      const API_BASE = 'https://68e7ebe8f2707e6128c96000.mockapi.io';
+      const RESOURCE = 'create/registro'; // recurso en tu MockAPI
+
+      // Función para alternar visibilidad de la contraseña
+      passwordToggle.addEventListener('click', function() {
+        const isPasswordVisible = passwordInput.type === 'text';
+        passwordInput.type = isPasswordVisible ? 'password' : 'text';
+        passwordToggle.setAttribute('aria-pressed', !isPasswordVisible);
+        passwordToggle.setAttribute('aria-label', isPasswordVisible ? 'Mostrar contraseña' : 'Ocultar contraseña');
+        passwordToggle.querySelector('svg').innerHTML = isPasswordVisible
+          ? '<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>'
+          : '<path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46A11.804 11.804 0 0 0 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3-.17 0-.33.02-.49.04z"/>';
+      });
+
+      // Función que consulta MockAPI para obtener el usuario por nombre
+      async function fetchUserByNombre(name) {
+        const url = `${API_BASE}/${RESOURCE}?name=${encodeURIComponent(name)}`;
+        console.debug('Fetching user from:', url);
+        try {
+          const resp = await fetch(url, {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' }
+          });
+          if (!resp.ok) {
+            console.error('Network response not ok', resp.status, resp.statusText);
+            throw new Error('Network response was not ok');
+          }
+          const data = await resp.json();
+          console.debug('MockAPI response:', data);
+          return data; // MockAPI normalmente devuelve un array
+        } catch (err) {
+          console.error('Fetch error:', err);
+          throw err;
+        }
+      }
+
+      // Manejo del submit: valida con la API si existe usuario y coincide la contraseña
+      loginForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        errorMsg.classList.add('hidden');
+        errorMsg.classList.remove('text-green-200', 'text-red-300');
+        const u = document.getElementById('name').value.trim();
+        const p = document.getElementById('password').value;
+
+        if (!u || !p) {
+          errorMsg.textContent = 'Por favor completa usuario y contraseña.';
+          errorMsg.classList.remove('hidden');
+          errorMsg.classList.add('text-red-300');
+          return;
+        }
+
+        try {
+          const users = await fetchUserByNombre(u);
+          if (!Array.isArray(users) || users.length === 0) {
+            errorMsg.textContent = 'Usuario o contraseña incorrectos.';
+            errorMsg.classList.remove('hidden');
+            errorMsg.classList.add('text-red-300');
+            return;
+          }
+
+          const user = users[0];
+          // AJUSTE: usar el campo correcto devuelto por tu MockAPI (aquí uso `name`)
+          if (user.password && user.password === p) {
+            localStorage.setItem('vulcano_auth', JSON.stringify({ id: user.id, name: user.name || user.username }));
+            errorMsg.classList.remove('hidden');
+            errorMsg.classList.add('text-green-200');
+            errorMsg.textContent = 'Acceso correcto. Redirigiendo...';
+            setTimeout(() => location.href = '../account.html', 900); // redirige a la página de cuenta
+          } else {
+            errorMsg.textContent = 'Usuario o contraseña incorrectos.';
+            errorMsg.classList.remove('hidden');
+            errorMsg.classList.add('text-red-300');
+          }
+        } catch (err) {
+          errorMsg.textContent = 'Error de conexión. Revisa la consola (CORS / URL).';
+          errorMsg.classList.remove('hidden');
+          errorMsg.classList.add('text-red-300');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

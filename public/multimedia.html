@@ -5,155 +5,311 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Multimedia</title>
+    <style>
+   
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #C19A6B;
+    /* permitir scroll para evitar que el contenido se "encoga" detrás del slider */
+    overflow: auto;
+}
+
+.container{
+    /* Contenedor centrado y responsive para el slider. Reducido para ajustar el hero */
+    position: relative;
+    margin: 1rem auto;
+    width: min(1200px, 95%);
+    height: 590px; /* altura reducida para encajar con un hero más compacto */
+    background: #f5f5f5;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.container .slide .item{
+    width: 200px;
+    height: 300px;
+    /* Items posicionados respecto al contenedor; la lógica de movimiento se mantiene en JS */
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 20px;
+    box-shadow: 0 18px 30px rgba(0,0,0,0.25);
+    background-position: 50% 50%;
+    background-size: cover;
+    background-color: #fff;
+    display: inline-block;
+    transition: 2s ease-in-out;
+}
+
+.slide .item:nth-child(1),
+.slide .item:nth-child(2){
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.slide .item:nth-child(3){
+    left: 50%;
+}
+.slide .item:nth-child(4){
+    left: calc(50% + 220px);
+}
+.slide .item:nth-child(5){
+    left: calc(50% + 440px);
+}
+
+/* here n = 0, 1, 2, 3,... */
+.slide .item:nth-child(n + 6){
+    left: calc(50% + 660px);
+    opacity: 0;
+}
+
+
+
+.item .content{
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    width: 300px;
+    text-align: left;
+    color: #eee;
+    transform: translate(0, -50%);
+    font-family: system-ui;
+    display: none;
+}
+
+
+.slide .item:nth-child(2) .content{
+    display: block;
+}
+
+
+.content .name{
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
+}
+
+.content .des{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
+}
+
+.content .download-btn{
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
+    background: #D2B48C;
+    color: #5A3A2E;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.content .download-btn:hover {
+    background: #A57E5A;
+    color: white;
+}
+
+
+@keyframes animate {
+    from{
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+    }
+}
+
+
+
+.button{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 16px;
+    z-index: 5;
+}
+
+.button button{
+    width: 40px;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+    border: 1px solid #000;
+    transition: 0.3s;
+}
+
+.button button:hover{
+    background: #ababab;
+    color: #fff;
+}
+  </style>
+    
 </head>
 <body class="bg-[#C19A6B] text-white flex flex-col min-h-screen">
 
-    <!-- Navbar -->
-
-<nav class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="../index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="/pi_web1/src/assets/imagenes-multimedia/vulcano.png" class="h-8" alt="Flowbite Logo" />
-      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
-  </a>
-  <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-   <button type="button" class="text-white bg-[#714C3A] hover:bg-[#C19A6B] focus:ring-4 focus:outline-none focus:ring-[#C19A6B] font-medium rounded-lg text-sm px-4 py-2 text-center border-gray-200 dark:bg-[#5a3a2e] dark:border-gray-700 dark:hover:bg-[#A57E5A]">
-    Login</button>
-    <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
-    <span class="sr-only">Open main menu</span>
-    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/></svg>
-    </button>
-  </div>
+        <!-- Navbar: encabezado consistente con el resto del sitio. Mantener estilos y accesibilidad. -->
+        <nav class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="../index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="../src/assets/image/vulcano.png" class="h-8" alt="Flowbite Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
+    </a>
+    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+     <button type="button" class="text-white bg-[#714C3A] hover:bg-[#C19A6B] focus:ring-4 focus:outline-none focus:ring-[#C19A6B] font-medium rounded-lg text-sm px-4 py-2 text-center border-gray-200 dark:bg-[#5a3a2e] dark:border-gray-700 dark:hover:bg-[#A57E5A]">
+        Login</button>
+        <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/></svg>
+        </button>
+    </div>
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
-    <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-[#714C3A] md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-[#D2B48C] md:px-4 dark:bg-[#5a3a2e] dark:border-gray-700">
-      <li class="md:px-2">
-        <a href="../index.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Inicio</a>
-      </li>
-      <li class="md:px-2">
-        <a href="../pages/nuestro_proyecto.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Nuestro Proyecto</a>
-      </li>
-      <li class="md:px-2">
-        <a href="../pages/nosotros.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Nuestro Equipo</a>
-      </li>
-      <li class="md:px-2">
-        <a href="/pi_web1/public/multimedia.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Multimedia</a>
-      </li>
-      <li class="md:px-2">
-        <a href="../pages/contactanos.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent dark:border-gray-700">Contactanos</a>
-      </li>
-    </ul>
-  </div>
-  </div>
+         <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg bg-[#714C3A] md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:bg-[#714C3A] dark:bg-[#5a3a2e]">
+    <li>
+        <a href="../index.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Inicio</a>
+    </li>
+    <li>
+        <a href="../public/aboutus.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Nuestro Equipo</a>
+    </li>
+    <li>
+        <a href="../public/multimedia.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Multimedia</a>
+    </li>
+    <li>
+        <a href="../public/class.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Agendamiento de Clases</a>
+    </li>
+     <li>
+        <a href="../public/challenges.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Desafíos</a>
+    </li>
+    <li>
+        <a href="../public/contact.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Contáctanos</a>
+    </li>
+        </ul>
+    </div>
+    </div>
 </nav>
-<!-- --><!-- Descripción Section -->
-<section class="py-16 bg-[#D2B48C]">
-  <div class="max-w-7xl mx-auto px-4">
-<!-- Header -->
-<div class="text-center mb-12 px-6 py-8 bg-[#5a3a2e] rounded-lg shadow-lg">
-  <h2 class="text-4xl font-bold text-white mb-4">Galería de Imágenes</h2>
-  <p class="text-lg text-white max-w-2xl mx-auto">
-    Transforma tu dispositivo con imágenes inspiradas en el mundo de la programación. Nuestra galería de imágenes te ofrece una colección exclusiva de fondos relacionados con el desarrollo de software, la lógica computacional y el diseño digital. Descarga tus favoritas y personaliza tu computadora, tablet o móvil con visuales que reflejan tu pasión por la tecnología.
-  </p>  
-</div>
 
-    <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
-  <div class="grid gap-4">
-    <div>
-      <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
-        src="https://images.unsplash.com/photo-1432462770865-65b70566d673?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
-        alt="gallery-photo"
-      />
-    </div>
-    <div>
-      <img
-        class="h-auto max-w-full rounded-lg object-cover object-center "
-        src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=927&amp;q=80"
-        alt="gallery-photo"
-      />
-    </div>
-    <div>
-      <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
-        src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2940&amp;q=80"
-        alt="gallery-photo"
-      />
-    </div>
-  </div>
-  <div class="grid gap-4">
-    <div>
-      <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
-        src="https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=687&amp;q=80"
-        alt="gallery-photo"
-      />
-    </div>
-    <div>
-      <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
-        src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80"
-        alt="gallery-photo"
-      />
-    </div>
-    <div>
-      <img
-        class="h-auto max-w-full rounded-lg object-cover object-center "
-        src="https://docs.material-tailwind.com/img/team-3.jpg"
-        alt="gallery-photo"
-      />
-    </div>
-  </div>
-  <div class="grid gap-4">
-    <div>
-      <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
-        src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2940&amp;q=80"
-        alt="gallery-photo"
-      />
-    </div>
-    <div>
-      <img
-        class="h-auto max-w-full rounded-lg object-cover object-center "
-        src="https://docs.material-tailwind.com/img/team-3.jpg"
-        alt="gallery-photo"
-      />
-    </div>
-    <div>
-      <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
-        src="https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=687&amp;q=80"
-        alt="gallery-photo"
-      />
-    </div>
-  </div>
-  <div class="grid gap-4">
-    <div>
-      <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
-        src="https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=687&amp;q=80"
-        alt="gallery-photo"
-      />
-    </div>
-    <div>
-      <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
-        src="/pi_web1/src/assets/imagenes-multimedia/volcanludico2.png"
-        alt="gallery-photo"
-      />
-    </div>
-  </div>
-</div>
 
-</section>
+    <!-- Hero: sección principal sin video de fondo (video removido para mejorar compatibilidad y rendimiento) -->
+    <section class="relative h-[40vh] flex items-center justify-center bg-[#5A3A2E]">
+            <div class="text-center px-6">
+                    <h2 class="text-3xl font-bold">Galería de Imágenes</h2>
+                    <p class="mt-2 text-white/90 leading-relaxed">Transforma tu dispositivo con imágenes inspiradas en aprender programación con juegos y volcanes. Nuestra galería de imágenes te ofrece una colección exclusiva de fondos relacionados con aprender software jugando y volcanes. Descarga tus favoritas y personaliza tu computadora, tablet o móvil con visuales que reflejen tu pasión por la tecnología.</p>
+            </div>
+        </section>
 
-<!-- Footer -->
 
+<!--Font Awesome CDN-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     
+    <div class="container">
+
+        <div class="slide">
+
+            
+            <div class="item" style="background-image: url('../src/assets/imagenes-multimedia/virtual1.jpg');">
+                <div class="content">
+                    <div class="name">Mundo Virtual</div>
+                    <div class="des">Pon a prueba tus conocimientos de programacion</div>
+                    <a href="../src/assets/imagenes-multimedia/virtual1.jpg" download class="download-btn">Descargar</a>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('../src/assets/imagenes-multimedia/virtual2.jpg');">
+                <div class="content">
+                    <div class="name">Galeria de imagenes</div>
+                    <div class="des"> Transforma tu dispositivo con imágenes inspiradas en el mundo de la programación. Nuestra galería de imágenes te ofrece una colección exclusiva de fondos relacionados con el desarrollo de software, la lógica computacional y el diseño digital. Descarga tus favoritas y personaliza tu computadora, tablet o móvil con visuales que reflejan tu pasión por la tecnología</div>
+                    <a href="../src/assets/imagenes-multimedia/virtual2.jpg" download class="download-btn">Descargar</a>
+                </div>
+                 </div>
+            <div class="item" style="background-image: url('../src/assets/imagenes-multimedia/albany2.png');">
+                <div class="content">
+                    <div class="name">Albany y Roque</div>
+                    <div class="des">Dentro de un juego virtual los atraparan.</div>
+                    <a href="../src/assets/imagenes-multimedia/albany2.png" download class="download-btn">Descargar</a>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('../src/assets/imagenes-multimedia/crater1.jpg');">
+                <div class="content">
+                    <div class="name">Paisaje Volcánico</div>
+                    <div class="des">Majestuoso paisaje volcánico al atardecer.</div>
+                    <a href="../src/assets/imagenes-multimedia/crater1.jpg" download class="download-btn">Descargar</a>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('../src/assets/imagenes-multimedia/virtual3.png');">
+                <div class="content">
+                    <div class="name">Mundo Virtual 3</div>
+                    <div class="des">juega y aprende aumentando tu puntaje.</div>
+                    <a href="../src/assets/imagenes-multimedia/virtual3.png" download class="download-btn">Descargar</a>
+                </div>
+            </div>           
+           
+            <div class="item" style="background-image: url('../src/assets/imagenes-multimedia/vulcano5.jpg');">
+                <div class="content">
+                    <div class="name">Cráter Activo</div>
+                    <div class="des">Vista impresionante de un cráter volcánico activo.</div>
+                    <a href="../src/assets/imagenes-multimedia/vulcano4.png" download class="download-btn">Descargar</a>
+                </div>
+            </div>
+
+            <div class="item" style="background-image: url('../src/assets/imagenes-multimedia/virtual4.png');">
+                <div class="content">
+                    <div class="name">Mundo virtual 4</div>
+                    <div class="des">Tambien puedes agendar citas.</div>
+                    <a href="../src/assets/imagenes-multimedia/virtual4.png" download class="download-btn">Descargar</a>
+                </div>
+              </div>
+
+            <div class="item" style="background-image: url('../src/assets/imagenes-multimedia/vulcano3.jpg');">
+                <div class="content">
+                    <div class="name">Erupcion volcanica</div>
+                    <div class="des">El majestuoso volcán en todo su esplendor.</div>
+                    <a href="../src/assets/imagenes-multimedia/vulcano3.jpg" download class="download-btn">Descargar</a>
+                </div>
+            </div>
+            
+
+        </div>
+
+        <div class="button">
+            <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
+    </div>
+
+<!-- Footer: conservar estructura y enlaces del diseño principal -->
 <footer class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700 py-4 w-full">
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
             <a href="../index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                <img src="/pi_web1/src/assets/imagenes-multimedia/vulcano.png" class="h-8" alt="Flowbite Logo" />
+                <img src="../src/assets/imagenes-multimedia/vulcano.png" class="h-8" alt="Flowbite Logo" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
             </a>
             <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 dark:text-white">
@@ -173,7 +329,27 @@
        <span class="block text-sm text-white sm:text-center dark:text-white">© 2025 <a href="https://flowbite.com/" class="hover:underline">Vulcano APP™</a>. All Rights Reserved.</span>
     </div>
 </footer>
+<script>
+let next = document.querySelector('.next')
+let prev = document.querySelector('.prev')
 
+next.addEventListener('click', function(){
+    let items = document.querySelectorAll('.item')
+    let slide = document.querySelector('.slide')
+    slide.appendChild(items[0])
+})
+
+prev.addEventListener('click', function(){
+    let items = document.querySelectorAll('.item')
+    let slide = document.querySelector('.slide')
+    slide.prepend(items[items.length - 1])
+})
+</script>
+
+<script>
+    // Initialize Flowbite
+    Flowbite.init();
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>

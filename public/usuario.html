@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Perfil de Usuario - Vulcano App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Estilos personalizados para fondo y card -->
+  <style>
+    body {
+      background: #D2B48C;
+      min-height: 100vh;
+    }
+    .profile-card {
+      background: #5A3A2E;
+      border-radius: 1rem;
+      box-shadow: 0 8px 32px rgba(245,134,7,0.18);
+      color: #fff;
+      max-width: 400px;
+      margin: 2rem auto;
+      padding: 2rem 1.5rem;
+      position: relative;
+    }
+    .avatar-preview {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #D2B48C;
+      background: #fff;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    }
+    .footer {
+      margin-top: 3rem;
+    }
+    /* Animaciones para el slider de cards */
+    @keyframes rotateCard1 {
+      0% { transform: translate(-50%, -50%) rotate(0deg) translateY(-90px); }
+      100% { transform: translate(-50%, -50%) rotate(360deg) translateY(-90px); }
+    }
+    @keyframes rotateCard2 {
+      0% { transform: translate(-50%, -50%) rotate(120deg) translateY(-90px); }
+      100% { transform: translate(-50%, -50%) rotate(480deg) translateY(-90px); }
+    }
+    @keyframes rotateCard3 {
+      0% { transform: translate(-50%, -50%) rotate(240deg) translateY(-90px); }
+      100% { transform: translate(-50%, -50%) rotate(600deg) translateY(-90px); }
+    }
+    /* Animaciones para el slider en eje Y (3D) */
+    @keyframes rotateCardY1 {
+      /* Avanza rápido al frente, más lento cuando pasa por detrás (120deg->240deg ocupa más tiempo) */
+      0% { transform: translate(-50%, -50%) rotateY(0deg) translateZ(220px); }
+      30% { transform: translate(-50%, -50%) rotateY(120deg) translateZ(220px); }
+      80% { transform: translate(-50%, -50%) rotateY(240deg) translateZ(220px); }
+      100% { transform: translate(-50%, -50%) rotateY(360deg) translateZ(220px); }
+    }
+    @keyframes rotateCardY2 {
+      0% { transform: translate(-50%, -50%) rotateY(120deg) translateZ(220px); }
+      30% { transform: translate(-50%, -50%) rotateY(240deg) translateZ(220px); }
+      80% { transform: translate(-50%, -50%) rotateY(360deg) translateZ(220px); }
+      100% { transform: translate(-50%, -50%) rotateY(600deg) translateZ(220px); }
+    }
+    @keyframes rotateCardY3 {
+      0% { transform: translate(-50%, -50%) rotateY(240deg) translateZ(220px); }
+      30% { transform: translate(-50%, -50%) rotateY(360deg) translateZ(220px); }
+      80% { transform: translate(-50%, -50%) rotateY(480deg) translateZ(220px); }
+      100% { transform: translate(-50%, -50%) rotateY(720deg) translateZ(220px); }
+    }
+    /* Optimización y 3D preserve */
+    .card-slider > div {
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      will-change: transform;
+    }
+    /* Pausar animación al pasar el cursor sobre el slider */
+    #user-slider:hover .card-slider {
+      animation-play-state: paused;
+    }
+     .slider-3d-section {
+            width: 100%;
+            background: #5A3A2E;
+            padding: 60px 0;
+            margin: 0;
+        }
+
+        .slider-3d-container {
+            width: min(1200px, 95%);
+            margin: 0 auto;
+            height: 550px;
+            position: relative;
+            perspective: 1500px;
+        }
+
+        .slider-3d-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .card-3d {
+            position: absolute;
+            width: 320px;
+            height: 420px;
+            left: 50%;
+            top: 50%;
+            margin-left: -160px;
+            margin-top: -210px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card-3d:hover {
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+        }
+
+        .card-3d-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-3d-content {
+            padding: 25px;
+            background: linear-gradient(135deg, #714C3A 0%, #5A3A2E 100%);
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-3d-title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #D2B48C;
+        }
+
+        .card-3d-description {
+            font-size: 14px;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Posiciones de las cartas en 3D */
+        .card-3d[data-position="0"] {
+            transform: translateX(0) translateZ(0) rotateY(0deg) scale(1);
+            z-index: 3;
+            opacity: 1;
+            filter: brightness(1);
+        }
+
+        .card-3d[data-position="1"] {
+            transform: translateX(380px) translateZ(-250px) rotateY(-30deg) scale(0.85);
+            z-index: 2;
+            opacity: 0.6;
+            filter: brightness(0.7);
+        }
+
+        .card-3d[data-position="2"] {
+            transform: translateX(-380px) translateZ(-250px) rotateY(30deg) scale(0.85);
+            z-index: 1;
+            opacity: 0.6;
+            filter: brightness(0.7);
+        }
+
+        /* Controles del slider */
+        .slider-3d-controls {
+            position: absolute;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        .control-3d-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: #714C3A;
+            border: 3px solid #D2B48C;
+            font-size: 20px;
+            color: #D2B48C;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .control-3d-btn:hover {
+            transform: scale(1.15);
+            background: #C19A6B;
+            color: #5A3A2E;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        .control-3d-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Indicador de carta activa */
+        .slider-3d-indicators {
+            position: absolute;
+            bottom: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #714C3A;
+            border: 2px solid #D2B48C;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .indicator-dot.active {
+            background: #D2B48C;
+            transform: scale(1.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slider-3d-container {
+                height: 480px;
+            }
+
+            .card-3d {
+                width: 280px;
+                height: 380px;
+                margin-left: -140px;
+                margin-top: -190px;
+            }
+
+            .card-3d-image {
+                height: 180px;
+            }
+
+            .card-3d-content {
+                height: 200px;
+                padding: 20px;
+            }
+
+            .card-3d-title {
+                font-size: 22px;
+            }
+
+            .card-3d-description {
+                font-size: 13px;
+            }
+
+            .card-3d[data-position="1"] {
+                transform: translateX(250px) translateZ(-200px) rotateY(-25deg) scale(0.75);
+            }
+
+            .card-3d[data-position="2"] {
+                transform: translateX(-250px) translateZ(-200px) rotateY(25deg) scale(0.75);
+            }
+
+            .slider-3d-controls {
+                bottom: -70px;
+            }
+
+            .control-3d-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slider-3d-section {
+                padding: 40px 0;
+            }
+
+            .card-3d[data-position="1"] {
+                transform: translateX(180px) translateZ(-180px) rotateY(-20deg) scale(0.7);
+            }
+
+            .card-3d[data-position="2"] {
+                transform: translateX(-180px) translateZ(-180px) rotateY(20deg) scale(0.7);
+            }
+        }
+  </style>
+</head>
+<body class="font-sans text-white">
+  <!-- Navbar: igual que el resto del sitio -->
+  <nav class="border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="../index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="../src/assets/image/vulcano.png" class="h-8" alt="Logo Vulcano" />
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
+      </a>
+      <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <button type="button" class="text-white bg-[#714C3A] hover:bg-[#C19A6B] focus:ring-4 focus:outline-none focus:ring-[#C19A6B] font-medium rounded-lg text-sm px-4 py-2 text-center border-gray-200 dark:bg-[#5a3a2e] dark:border-gray-700 dark:hover:bg-[#A57E5A]">Login</button>
+      </div>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+        <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg bg-[#714C3A] md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:bg-[#714C3A] dark:bg-[#5a3a2e]">
+          <li><a href="../index.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Inicio</a></li>
+          <li><a href="../public/aboutus.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Nuestro Equipo</a></li>
+          <li><a href="../public/multimedia.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Multimedia</a></li>
+          <li><a href="../public/class.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Agendamiento de Clases</a></li>
+          <li><a href="../public/challenges.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Desafíos</a></li>
+          <li><a href="../public/contact.html" class="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-[#D2B48C] md:hover:bg-transparent md:hover:text-[#5A3A2E] dark:text-white dark:hover:bg-[#A57E5A] dark:hover:text-[#C19A6B] md:dark:hover:bg-transparent">Contáctanos</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Card de perfil de usuario -->
+  <main>
+    <section class="profile-card shadow-xl" aria-labelledby="profileTitle">
+      <!-- Mostrar nombre de usuario obtenido del login -->
+      <h1 id="profileTitle" class="text-2xl font-bold mb-2">Bienvenido, <span id="username">Usuario</span></h1>
+      <p class="mb-4 text-[#D2B48C]">Este es tu perfil personal. Puedes subir una imagen para tu avatar.</p>
+      <!-- Avatar y formulario de subida -->
+      <form id="avatarForm" class="flex flex-col items-center gap-3" autocomplete="off">
+        <img id="avatarPreview" src="../src/assets/image/vulcano.png" alt="Avatar" class="avatar-preview" />
+        <input type="file" id="avatarInput" accept="image/*" class="block w-full text-sm text-gray-200 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#D2B48C] file:text-[#5A3A2E] hover:file:bg-[#A57E5A]" aria-label="Subir imagen de avatar" />
+        <!-- El botón ya no persiste el avatar en localStorage; solo actualiza la vista -->
+        <button type="button" id="avatarUpdateBtn" class="bg-[#D2B48C] hover:bg-[#A57E5A] text-[#5A3A2E] px-4 py-2 rounded font-semibold">Actualizar avatar</button>
+      </form>
+      <!-- Enlace configurable -->
+      <div class="mt-6 text-center">
+        <a id="customLink" href="../index.html" class="underline text-[#D2B48C] hover:text-[#A57E5A]">Ir a la página principal</a>
+      </div>
+    </section>
+
+    <section class="slider-3d-section">
+    <div class="slider-3d-container">
+        <div class="slider-3d-wrapper">
+            
+            <!-- Carta 1 -->
+            <a href="pagina1.html" class="card-3d" data-position="0">
+                <img src="../src/assets/imagenes-multimedia/metodologias agiles.png" alt="Mundo Virtual" class="card-3d-image">
+                <div class="card-3d-content">
+                    <h3 class="card-3d-title">Metodologias agiles</h3>
+                    <p class="card-3d-description">Aprende jugando los conceptos agiles y el trabajo en equipo de forma colaborativa en un entorno virtual.</p>
+                </div>
+            </a>
+
+            <!-- Carta 2 -->
+            <a href="pagina2.html" class="card-3d" data-position="1">
+                <img src="../src/assets/imagenes-multimedia/logicaprogramacion.png" alt="Logica de programacion" class="card-3d-image">
+                <div class="card-3d-content">
+                    <h3 class="card-3d-title">Logica de programacion</h3>
+                    <p class="card-3d-description">Sumérgete en un universo de código y creatividad donde aprenderás programación de forma interactiva.</p>
+                </div>
+            </a>
+
+            <!-- Carta 3 -->
+            <a href="pagina3.html" class="card-3d" data-position="2">
+                <img src="../src/assets/imagenes-multimedia/introduccionprogramacion1.png" alt="Introducción a la Programación" class="card-3d-image">
+                <div class="card-3d-content">
+                    <h3 class="card-3d-title">Introducción a la Programación</h3>
+                    <p class="card-3d-description">Descubre lo impresionante que es programar en html y css y cómo puedes crear tus propias páginas web.</p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Controles de navegación -->
+        <div class="slider-3d-controls">
+            <button class="control-3d-btn" id="prevBtn3D">◀</button>
+            <button class="control-3d-btn" id="nextBtn3D">▶</button>
+        </div>
+
+        <!-- Indicadores -->
+        <div class="slider-3d-indicators">
+            <span class="indicator-dot active" data-index="0"></span>
+            <span class="indicator-dot" data-index="1"></span>
+            <span class="indicator-dot" data-index="2"></span>
+        </div>
+    </div>
+</section>
+  </main>
+
+  <!-- Footer: igual que el resto del sitio -->
+  <footer class="footer border-gray-200 bg-[#714C3A] dark:bg-[#5a3a2e] dark:border-gray-700 py-4 w-full">
+    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <a href="../index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+          <img src="/pi_web1/src/assets/imagenes-multimedia/vulcano.png" class="h-8" alt="Logo Vulcano" />
+          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Vulcano APP</span>
+        </a>
+        <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 dark:text-white">
+          <li><a href="../pages/nuestro_proyecto.html" class="hover:underline me-4 md:me-6">Nuestro Proyecto</a></li>
+          <li><a href="../pages/nosotros.html" class="hover:underline me-4 md:me-6">Nuestro Equipo</a></li>
+          <li><a href="../pages/contactanos.html" class="hover:underline">Contactanos</a></li>
+        </ul>
+      </div>
+      <hr class="my-6 border-white sm:mx-auto dark:border-white lg:my-8" />
+      <span class="block text-sm text-white sm:text-center dark:text-white">© 2025 <a href="https://flowbite.com/" class="hover:underline">Vulcano APP™</a>. All Rights Reserved.</span>
+    </div>
+  </footer>
+
+  <!-- Script para mostrar nombre y manejar avatar -->
+  <script>
+    // Mostrar el nombre de usuario desde localStorage (guardado en login)
+    document.addEventListener('DOMContentLoaded', function() {
+      let user = null;
+      try {
+        user = JSON.parse(localStorage.getItem('vulcano_auth'));
+      } catch(e) {}
+      if (user && user.name) {
+        document.getElementById('username').textContent = user.name;
+      }
+      // Nota: El avatar ya no se recupera ni se guarda en localStorage por pedido del usuario.
+    });
+
+    // Previsualizar avatar seleccionado (no se persiste en localStorage)
+    const avatarInput = document.getElementById('avatarInput');
+    const avatarPreview = document.getElementById('avatarPreview');
+    avatarInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        avatarPreview.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Botón de actualizar solo actualiza la vista (sin persistencia)
+    document.getElementById('avatarUpdateBtn').addEventListener('click', function(e) {
+      // Si se desea añadir validación o envío al servidor, se implementa aquí.
+      // Actualmente sólo mantiene la imagen en la vista durante la sesión.
+      if (!avatarPreview.src) {
+        alert('Seleccione una imagen para actualizar su avatar.');
+      }
+    });
+  </script>
+  <script>
+    (function() {
+        const cards3D = document.querySelectorAll('.card-3d');
+        const indicators = document.querySelectorAll('.indicator-dot');
+        let currentPosition3D = 0;
+        const totalCards3D = cards3D.length;
+
+        function updateCards3D() {
+            cards3D.forEach((card, index) => {
+                const position = (index - currentPosition3D + totalCards3D) % totalCards3D;
+                card.setAttribute('data-position', position);
+            });
+
+            // Actualizar indicadores
+            indicators.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentPosition3D);
+            });
+        }
+
+        // Botón siguiente
+        document.getElementById('nextBtn3D').addEventListener('click', () => {
+            currentPosition3D = (currentPosition3D + 1) % totalCards3D;
+            updateCards3D();
+        });
+
+        // Botón anterior
+        document.getElementById('prevBtn3D').addEventListener('click', () => {
+            currentPosition3D = (currentPosition3D - 1 + totalCards3D) % totalCards3D;
+            updateCards3D();
+        });
+
+        // Click en las cartas laterales
+        cards3D.forEach((card) => {
+            card.addEventListener('click', (e) => {
+                const position = parseInt(card.getAttribute('data-position'));
+                if (position !== 0) {
+                    e.preventDefault();
+                    if (position === 1) {
+                        currentPosition3D = (currentPosition3D + 1) % totalCards3D;
+                    } else if (position === 2) {
+                        currentPosition3D = (currentPosition3D - 1 + totalCards3D) % totalCards3D;
+                    }
+                    updateCards3D();
+                }
+            });
+        });
+
+        // Click en indicadores
+        indicators.forEach((dot) => {
+            dot.addEventListener('click', () => {
+                currentPosition3D = parseInt(dot.getAttribute('data-index'));
+                updateCards3D();
+            });
+        });
+
+        // Soporte para teclado (opcional)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                currentPosition3D = (currentPosition3D - 1 + totalCards3D) % totalCards3D;
+                updateCards3D();
+            } else if (e.key === 'ArrowRight') {
+                currentPosition3D = (currentPosition3D + 1) % totalCards3D;
+                updateCards3D();
+            }
+        });
+    })();
+</script>
+
+</body>
+</html>
